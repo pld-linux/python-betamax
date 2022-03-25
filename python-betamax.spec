@@ -9,7 +9,7 @@ Summary:	VCR imitation for python-requests
 Summary(pl.UTF-8):	Imitacja VCR dla python-requests
 Name:		python-betamax
 Version:	0.8.1
-Release:	2
+Release:	3
 License:	Apache v2.0
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/betamax/
