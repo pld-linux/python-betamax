@@ -3,13 +3,14 @@
 %bcond_without	doc	# Sphinx documentation
 %bcond_with	tests	# unit tests (6 failing as of 0.8.1)
 %bcond_without	python2 # CPython 2.x module
-%bcond_without	python3 # CPython 3.x module
+%bcond_with	python3 # CPython 3.x module (built from python3-betamax.spec)
 
 Summary:	VCR imitation for python-requests
 Summary(pl.UTF-8):	Imitacja VCR dla python-requests
 Name:		python-betamax
+# keep 0.8.x here for python2 support
 Version:	0.8.1
-Release:	6
+Release:	7
 License:	Apache v2.0
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/betamax/
@@ -33,7 +34,7 @@ BuildRequires:	python3-pytest
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with doc}
-BuildRequires:	sphinx-pdg
+BuildRequires:	sphinx-pdg-2
 %endif
 Requires:	python-modules >= 1:2.7
 BuildArch:	noarch
@@ -97,7 +98,8 @@ PYTEST_PLUGINS="betamax.fixtures.pytest" \
 %endif
 
 %if %{with doc}
-%{__make} -C docs html
+%{__make} -C docs html \
+	SPHINXBUILD=sphinx-build-2
 %endif
 
 %install
